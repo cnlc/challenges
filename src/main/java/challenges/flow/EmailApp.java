@@ -12,7 +12,8 @@ public class EmailApp implements IApp<String> {
     this.messages = new LinkedList<String>();
   }
 
-  public String in(IEvent event) throws EventException, ProtocolException, ActionException {
+  @SuppressWarnings("rawtypes")
+public String in(IEvent event) throws EventException, ProtocolException, ActionException {
     String message = (String) event.trigger();
     if(!message.startsWith("MSG:")) {
       throw new ProtocolException();
